@@ -1,0 +1,605 @@
+<!doctype html>
+<html id="magnolia" lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="fb:pages" content="115407078489594" />
+<meta name="description" content="Los sistemas de control de versiones realizan un seguimiento de todos los cambios de un archivo a lo largo del tiempo para poder restaurar versiones anteriores y los utilizan los equipos de software para el código fuente">
+<meta name="author" content="Atlassian">
+<link rel="canonical" href="https://www.atlassian.com/es/git/tutorials/what-is-version-control"/>
+<title>Qué es el control de versiones | Atlassian Git Tutorial</title>
+<style>body { display: none; }</style>
+<link href="https://wac-cdn.atlassian.com" rel="preconnect">
+<link rel="alternate" href="https://www.atlassian.com/git/tutorials/what-is-version-control" hreflang="x-default" />
+<link rel="alternate" href="https://www.atlassian.com/git/tutorials/what-is-version-control" hreflang="en" />
+<link rel="alternate" href="https://www.atlassian.com/ja/git/tutorials/what-is-version-control" hreflang="ja" />
+<link rel="alternate" href="https://www.atlassian.com/fr/git/tutorials/what-is-version-control" hreflang="fr" />
+<link rel="alternate" href="https://www.atlassian.com/de/git/tutorials/what-is-version-control" hreflang="de" />
+<link rel="alternate" href="https://www.atlassian.com/es/git/tutorials/what-is-version-control" hreflang="es" />
+<link rel="alternate" href="https://www.atlassian.com/br/git/tutorials/what-is-version-control" hreflang="pt-BR" />
+<link rel="alternate" href="https://www.atlassian.com/zh/git/tutorials/what-is-version-control" hreflang="zh-Hans" />
+<link rel="alternate" href="https://www.atlassian.com/ko/git/tutorials/what-is-version-control" hreflang="ko" />
+<link rel="alternate" href="https://www.atlassian.com/ru/git/tutorials/what-is-version-control" hreflang="ru" />
+<link rel="alternate" href="https://www.atlassian.com/pl/git/tutorials/what-is-version-control" hreflang="pl" />
+<link rel="alternate" href="https://www.atlassian.com/it/git/tutorials/what-is-version-control" hreflang="it" />
+<link rel="alternate" href="https://www.atlassian.com/nl/git/tutorials/what-is-version-control" hreflang="nl" />
+<link rel="alternate" href="https://www.atlassian.com/hu/git/tutorials/what-is-version-control" hreflang="hu" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/favicon.png" sizes="32x32" />
+<link rel="mask-icon" href="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/safari-pinned-tab.svg" color="#59afe1">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://wac-cdn.atlassian.com/assets/img/favicons/gitguide/mstile-144x144.png" />
+<meta name="theme-color" content="#205081">
+<meta property="og:title" content="Qué es el control de versiones | Atlassian Git Tutorial" />
+<meta property="og:description" content="Los sistemas de control de versiones realizan un seguimiento de todos los cambios de un archivo a lo largo del tiempo para poder restaurar versiones anteriores y los utilizan los equipos de software para el código fuente" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.atlassian.com/es/git/tutorials/what-is-version-control" />
+<meta property="og:site_name" content="Atlassian" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@Atlassian" />
+<script src="https://wac-cdn.atlassian.com/static/master/692/assets/build/js/jquery.js?cdnVersion=1830"></script>
+<script type="text/javascript">
+function getCookie(name) {
+var re = new RegExp(name + "=([^;]+)");
+var value = re.exec(document.cookie);
+return (value != null) ? unescape(value[1]) : null;
+}
+(function() {
+var anonymous_id = getCookie('ajs_anonymous_id') || '';
+var bxp_gateway_request_id = getCookie('bxp_gateway_request_id') || '';
+window._pxParam1 = anonymous_id.replace(/\"/g, "");
+window._pxParam2 = bxp_gateway_request_id;
+var p = document.getElementsByTagName('script')[0],
+s = document.createElement('script');
+s.async = 1;
+s.src = '//client.px-cloud.net/PXVrYIK386/main.min.js';
+p.parentNode.insertBefore(s,p);
+}());
+</script>
+<script type="text/javascript">
+var LOCALIZED_PRICING_CONTENTFUL_SPACE = "3s3v3nq72la0";
+var LOCALIZED_PRICING_CONTENTFUL_ENVIRONMENT = "master";
+var LOCALIZED_PRICING_CONTENTFUL_ACCESS_TOKEN = "b9c3ea8d9c664146e9c7dd136a1d40ff8415715c3ef8ee222536f36fb2056613";
+var LOCALIZED_PRICING_USE_GEO_CURRENCY = true;
+</script>
+</head>
+<body id="what-is-version-control" class="wac git tutorials what-is-version-control">
+<div id="header">
+<div class="tutorial-sidebar is-active">
+<div class="_bumper"></div>
+<div class="_wrap">
+<ol>
+<div class="_group">
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud" class="cms-link cms-link--text group-link" >Aprende Git</a>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud" class="cms-link cms-link--text tutorial-link" >Aprende a usar Git con Bitbucket Cloud</a>
+<div class="_toc">
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud#create-the-repository" class="cms-link cms-link--text section-link" >Crea un repositorio de Git</a>
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud#copy-and-add-files" class="cms-link cms-link--text section-link" >Copia tu repositorio de Git y añade los archivos</a>
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud#pull-changes" class="cms-link cms-link--text section-link" >Incorpora cambios de tu repositorio de Git en Bitbucket Cloud</a>
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud#git-branch-to-merge" class="cms-link cms-link--text section-link" >Usa una rama de Git para fusionar un archivo</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/learn-about-code-review-in-bitbucket-cloud" class="cms-link cms-link--text tutorial-link" >Obtén información sobre la revisión del código en Bitbucket Cloud</a>
+<div class="_toc">
+<a href="/es/git/tutorials/learn-about-code-review-in-bitbucket-cloud#create-repository" class="cms-link cms-link--text section-link" >Creación de un repositorio‑</a>
+<a href="/es/git/tutorials/learn-about-code-review-in-bitbucket-cloud#clone-branch" class="cms-link cms-link--text section-link" >Clona y haz un cambio en la nueva rama</a>
+<a href="/es/git/tutorials/learn-about-code-review-in-bitbucket-cloud#im-using-git" class="cms-link cms-link--text section-link" >Si estás usando una línea de comandos</a>
+<a href="/es/git/tutorials/learn-about-code-review-in-bitbucket-cloud#im-using-sourcetree" class="cms-link cms-link--text section-link" >Si estás usando Sourcetree</a>
+<a href="/es/git/tutorials/learn-about-code-review-in-bitbucket-cloud#create-a-pull-request-to-merge-your-change" class="cms-link cms-link--text section-link" >Crear una solicitud de extracción para fusionar el cambio</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/learn-branching-with-bitbucket-cloud" class="cms-link cms-link--text tutorial-link" >Aprende sobre ramas con Bitbucket Cloud</a>
+<div class="_toc">
+<a href="/es/git/tutorials/learn-branching-with-bitbucket-cloud#create-the-repository" class="cms-link cms-link--text section-link" >Preparación</a>
+<a href="/es/git/tutorials/learn-branching-with-bitbucket-cloud#review-branching-workflow" class="cms-link cms-link--text section-link" >Revisa el workflow de ramas</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/learn-undoing-changes-with-bitbucket" class="cms-link cms-link--text tutorial-link" >Aprende sobre cómo deshacer cambios con Bitbucket Cloud</a>
+<div class="_toc">
+<a href="/es/git/tutorials/learn-undoing-changes-with-bitbucket#git-status" class="cms-link cms-link--text section-link" >git status</a>
+<a href="/es/git/tutorials/learn-undoing-changes-with-bitbucket#git-log" class="cms-link cms-link--text section-link" >git log</a>
+<a href="/es/git/tutorials/learn-undoing-changes-with-bitbucket#git-reset" class="cms-link cms-link--text section-link" >git reset</a>
+<a href="/es/git/tutorials/learn-undoing-changes-with-bitbucket#git-revert" class="cms-link cms-link--text section-link" >git revert</a>
+</div>
+</div>
+</div>
+<div class="_group">
+<a href="/es/git/tutorials/what-is-version-control" class="cms-link cms-link--text group-link" >Principiante</a>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/what-is-version-control" class="cms-link cms-link--text tutorial-link" >Qué es el control de versiones</a>
+<div class="_toc">
+<a href="/es/git/tutorials/what-is-version-control#benefits-of-version-control" class="cms-link cms-link--text section-link" >Ventajas del control de versiones</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/source-code-management" class="cms-link cms-link--text tutorial-link" >Gestión del código fuente</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/what-is-git" class="cms-link cms-link--text tutorial-link" >Qué es Git</a>
+<div class="_toc">
+<a href="/es/git/tutorials/what-is-git#performance" class="cms-link cms-link--text section-link" >Rendimiento</a>
+<a href="/es/git/tutorials/what-is-git#security" class="cms-link cms-link--text section-link" >Seguridad</a>
+<a href="/es/git/tutorials/what-is-git#flexibility" class="cms-link cms-link--text section-link" >Flexibilidad</a>
+<a href="/es/git/tutorials/what-is-git#version-control-with-git" class="cms-link cms-link--text section-link" >Control de versiones con Git</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/why-git" class="cms-link cms-link--text tutorial-link" >Por qué utilizar Git en tu organización</a>
+<div class="_toc">
+<a href="/es/git/tutorials/why-git#git-for-developers" class="cms-link cms-link--text section-link" >Git para desarrolladores</a>
+<a href="/es/git/tutorials/why-git#git-for-marketing" class="cms-link cms-link--text section-link" >Git para marketing</a>
+<a href="/es/git/tutorials/why-git#git-for-product-management" class="cms-link cms-link--text section-link" >Git para gestión de productos</a>
+<a href="/es/git/tutorials/why-git#git-for-designers" class="cms-link cms-link--text section-link" >Git para diseñadores</a>
+<a href="/es/git/tutorials/why-git#git-for-customer-support" class="cms-link cms-link--text section-link" >Git para atención al cliente</a>
+<a href="/es/git/tutorials/why-git#git-for-human-resources" class="cms-link cms-link--text section-link" >Git para recursos humanos</a>
+<a href="/es/git/tutorials/why-git#git-for-anyone-managing-budget" class="cms-link cms-link--text section-link" >Git para gestores de presupuestos</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/install-git" class="cms-link cms-link--text tutorial-link" >Instalar Git</a>
+<div class="_toc">
+<a href="/es/git/tutorials/install-git#mac-os-x" class="cms-link cms-link--text section-link" >Instalar Git en Mac OS X</a>
+<a href="/es/git/tutorials/install-git#windows" class="cms-link cms-link--text section-link" >Instalar Git en Windows</a>
+<a href="/es/git/tutorials/install-git#linux" class="cms-link cms-link--text section-link" >Instalar Git en Linux</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-ssh" class="cms-link cms-link--text tutorial-link" >SSH de Git</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/export-git-archive" class="cms-link cms-link--text tutorial-link" >Archivo Git</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/gitops" class="cms-link cms-link--text tutorial-link" >GitOps</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/atlassian-git-cheatsheet" class="cms-link cms-link--text tutorial-link" >Chuleta de Git</a>
+</div>
+</div>
+<div class="_group">
+<a href="/es/git/tutorials/setting-up-a-repository" class="cms-link cms-link--text group-link" >Empieza ya</a>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/setting-up-a-repository" class="cms-link cms-link--text tutorial-link" >Configuración de un repositorio</a>
+<div class="_toc">
+<a href="/es/git/tutorials/setting-up-a-repository/git-init" class="cms-link cms-link--text section-link" >git init</a>
+<a href="/es/git/tutorials/setting-up-a-repository/git-clone" class="cms-link cms-link--text section-link" >git clone</a>
+<a href="/es/git/tutorials/setting-up-a-repository/git-config" class="cms-link cms-link--text section-link" >git config</a>
+<a href="/es/git/tutorials/git-alias" class="cms-link cms-link--text section-link" >Alias de Git</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/saving-changes" class="cms-link cms-link--text tutorial-link" >Guardar cambios</a>
+<div class="_toc">
+<a href="/es/git/tutorials/saving-changes" class="cms-link cms-link--text section-link" >git add</a>
+<a href="/es/git/tutorials/saving-changes/git-commit" class="cms-link cms-link--text section-link" >git commit</a>
+<a href="/es/git/tutorials/saving-changes/git-diff" class="cms-link cms-link--text section-link" >git diff</a>
+<a href="/es/git/tutorials/saving-changes/git-stash" class="cms-link cms-link--text section-link" >git stash</a>
+<a href="/es/git/tutorials/saving-changes/gitignore" class="cms-link cms-link--text section-link" >.gitignore</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/inspecting-a-repository" class="cms-link cms-link--text tutorial-link" >Examen de un repositorio</a>
+<div class="_toc">
+<a href="/es/git/tutorials/inspecting-a-repository" class="cms-link cms-link--text section-link" >git status</a>
+<a href="/es/git/tutorials/inspecting-a-repository/git-tag" class="cms-link cms-link--text section-link" >git tag</a>
+<a href="/es/git/tutorials/inspecting-a-repository/git-blame" class="cms-link cms-link--text section-link" >git blame</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/undoing-changes" class="cms-link cms-link--text tutorial-link" >Deshacer cambios</a>
+<div class="_toc">
+<a href="/es/git/tutorials/undoing-changes" class="cms-link cms-link--text section-link" >git checkout</a>
+<a href="/es/git/tutorials/undoing-changes/git-clean" class="cms-link cms-link--text section-link" >git clean</a>
+<a href="/es/git/tutorials/undoing-changes/git-revert" class="cms-link cms-link--text section-link" >git revert</a>
+<a href="/es/git/tutorials/undoing-changes/git-reset" class="cms-link cms-link--text section-link" >git reset</a>
+<a href="/es/git/tutorials/undoing-changes/git-rm" class="cms-link cms-link--text section-link" >git rm</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/rewriting-history" class="cms-link cms-link--text tutorial-link" >Reescribir el historial</a>
+<div class="_toc">
+<a href="/es/git/tutorials/rewriting-history#git-commit--amend" class="cms-link cms-link--text section-link" >git commit --amend</a>
+<a href="/es/git/tutorials/rewriting-history/git-rebase" class="cms-link cms-link--text section-link" >git rebase</a>
+<a href="/es/git/tutorials/rewriting-history#git-rebase-i" class="cms-link cms-link--text section-link" >git rebase -i</a>
+<a href="/es/git/tutorials/rewriting-history/git-reflog" class="cms-link cms-link--text section-link" >git reflog</a>
+</div>
+</div>
+</div>
+<div class="_group">
+<a href="/es/git/tutorials/syncing" class="cms-link cms-link--text group-link" >Colaboración</a>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/syncing" class="cms-link cms-link--text tutorial-link" >Sincronización</a>
+<div class="_toc">
+<a href="/es/git/tutorials/syncing" class="cms-link cms-link--text section-link" >git remote</a>
+<a href="/es/git/tutorials/syncing/git-fetch" class="cms-link cms-link--text section-link" >git fetch</a>
+<a href="/es/git/tutorials/syncing/git-push" class="cms-link cms-link--text section-link" >git push</a>
+<a href="/es/git/tutorials/syncing/git-pull" class="cms-link cms-link--text section-link" >git pull</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/making-a-pull-request" class="cms-link cms-link--text tutorial-link" >Realizar una pull request</a>
+<div class="_toc">
+<a href="/es/git/tutorials/making-a-pull-request#how-it-works" class="cms-link cms-link--text section-link" >Funcionamiento</a>
+<a href="/es/git/tutorials/making-a-pull-request#example" class="cms-link cms-link--text section-link" >Ejemplo</a>
+<a href="/es/git/tutorials/making-a-pull-request#where-to-go" class="cms-link cms-link--text section-link" >Hacia dónde ir</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/using-branches" class="cms-link cms-link--text tutorial-link" >Usar ramas</a>
+<div class="_toc">
+<a href="/es/git/tutorials/using-branches" class="cms-link cms-link--text section-link" >rama de git</a>
+<a href="/es/git/tutorials/using-branches/git-checkout" class="cms-link cms-link--text section-link" >git checkout</a>
+<a href="/es/git/tutorials/using-branches/git-merge" class="cms-link cms-link--text section-link" >Git merge</a>
+<a href="/es/git/tutorials/using-branches/merge-conflicts" class="cms-link cms-link--text section-link" >Fusiona los conflictos</a>
+<a href="/es/git/tutorials/using-branches/merge-strategy" class="cms-link cms-link--text section-link" >Combinación de estrategias</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/comparing-workflows" class="cms-link cms-link--text tutorial-link" >Comparar workflows</a>
+<div class="_toc">
+<a href="/es/git/tutorials/comparing-workflows#centralized-workflow" class="cms-link cms-link--text section-link" >Flujo de trabajo centralizado</a>
+<a href="/es/git/tutorials/comparing-workflows/feature-branch-workflow" class="cms-link cms-link--text section-link" >Flujo de trabajo de rama de función</a>
+<a href="/es/git/tutorials/comparing-workflows/gitflow-workflow" class="cms-link cms-link--text section-link" >Flujo de trabajo de Gitflow</a>
+<a href="/es/git/tutorials/comparing-workflows/forking-workflow" class="cms-link cms-link--text section-link" >Flujo de trabajo de bifurcación</a>
+</div>
+</div>
+</div>
+<div class="_group">
+<a href="/es/git/tutorials/svn-to-git-prepping-your-team-migration" class="cms-link cms-link--text group-link" >Migración a Git</a>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/svn-to-git-prepping-your-team-migration" class="cms-link cms-link--text tutorial-link" >De SVN a Git: prepárate para la migración</a>
+<div class="_toc">
+<a href="/es/git/tutorials/svn-to-git-prepping-your-team-migration#for-administrators" class="cms-link cms-link--text section-link" >Para administradores</a>
+<a href="/es/git/tutorials/svn-to-git-prepping-your-team-migration#basic-git-commands" class="cms-link cms-link--text section-link" >Comandos básicos de Git</a>
+<a href="/es/git/tutorials/svn-to-git-prepping-your-team-migration#git-migration-tools" class="cms-link cms-link--text section-link" >Herramientas de migración de Git</a>
+<a href="/es/git/tutorials/svn-to-git-prepping-your-team-migration#for-developers" class="cms-link cms-link--text section-link" >Para desarrolladores</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/migrating-overview" class="cms-link cms-link--text tutorial-link" >Migrar a Git desde SVN</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/migrating-prepare" class="cms-link cms-link--text tutorial-link" >Preparar</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/migrating-convert" class="cms-link cms-link--text tutorial-link" >Convertir</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/migrating-synchronize" class="cms-link cms-link--text tutorial-link" >Sincronizar</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/migrating-share" class="cms-link cms-link--text tutorial-link" >Compartir</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/migrating-migrate" class="cms-link cms-link--text tutorial-link" >Migrar</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/perforce-git" class="cms-link cms-link--text tutorial-link" >De Perforce a Git: por qué dar el paso</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/perforce-git-migration" class="cms-link cms-link--text tutorial-link" >Migrar de Perforce a Git</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-move-repository" class="cms-link cms-link--text tutorial-link" >Cómo mover un repositorio de Git con historial</a>
+</div>
+</div>
+<div class="_group">
+<a href="/es/git/tutorials/advanced-overview" class="cms-link cms-link--text group-link" >Consejos avanzados</a>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/advanced-overview" class="cms-link cms-link--text tutorial-link" >Tutoriales de Git avanzados</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/merging-vs-rebasing" class="cms-link cms-link--text tutorial-link" >La fusión frente a la reorganización</a>
+<div class="_toc">
+<a href="/es/git/tutorials/merging-vs-rebasing#conceptual-overview" class="cms-link cms-link--text section-link" >Resumen de conceptos</a>
+<a href="/es/git/tutorials/merging-vs-rebasing#the-golden-rule-of-rebasing" class="cms-link cms-link--text section-link" >La regla de oro de la reorganización</a>
+<a href="/es/git/tutorials/merging-vs-rebasing#workflow-walkthrough" class="cms-link cms-link--text section-link" >Guía del flujo de trabajo</a>
+<a href="/es/git/tutorials/merging-vs-rebasing#summary" class="cms-link cms-link--text section-link" >Resumen</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/resetting-checking-out-and-reverting" class="cms-link cms-link--text tutorial-link" >Restablecimiento, extracción y reversión</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-log" class="cms-link cms-link--text tutorial-link" >Git log avanzado</a>
+<div class="_toc">
+<a href="/es/git/tutorials/git-log#formatting-log-output" class="cms-link cms-link--text section-link" >Formato de la salida del registro</a>
+<a href="/es/git/tutorials/git-log#filtering-the-commit-history" class="cms-link cms-link--text section-link" >Filtrado del historial de confirmaciones</a>
+<a href="/es/git/tutorials/git-log#summary" class="cms-link cms-link--text section-link" >Resumen</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-hooks" class="cms-link cms-link--text tutorial-link" >Puntos de enganche Git</a>
+<div class="_toc">
+<a href="/es/git/tutorials/git-hooks#conceptual-overview" class="cms-link cms-link--text section-link" >Resumen de conceptos</a>
+<a href="/es/git/tutorials/git-hooks#local-hooks" class="cms-link cms-link--text section-link" >Hooks locales</a>
+<a href="/es/git/tutorials/git-hooks#server-side-hooks" class="cms-link cms-link--text section-link" >Hooks de servidor</a>
+<a href="/es/git/tutorials/git-hooks#summary" class="cms-link cms-link--text section-link" >Resumen</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/refs-and-the-reflog" class="cms-link cms-link--text tutorial-link" >Referencias y registro de referencias</a>
+<div class="_toc">
+<a href="/es/git/tutorials/refs-and-the-reflog#hashes" class="cms-link cms-link--text section-link" >Hashes</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#refs" class="cms-link cms-link--text section-link" >Referencias</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#packed-refs" class="cms-link cms-link--text section-link" >Referencias empaquetadas</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#special-refs" class="cms-link cms-link--text section-link" >Referencias especiales</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#refspecs" class="cms-link cms-link--text section-link" >Referencias de especificaciones</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#relative-refs" class="cms-link cms-link--text section-link" >Referencias relativas</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#the-reflog" class="cms-link cms-link--text section-link" >El comando reflog</a>
+<a href="/es/git/tutorials/refs-and-the-reflog#summary" class="cms-link cms-link--text section-link" >Resumen</a>
+</div>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-submodule" class="cms-link cms-link--text tutorial-link" >Submódulos de Git</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-subtree" class="cms-link cms-link--text tutorial-link" >Subárbol de Git</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/big-repositories" class="cms-link cms-link--text tutorial-link" >Grandes repositorios en Git</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-lfs" class="cms-link cms-link--text tutorial-link" >Git LFS</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-gc" class="cms-link cms-link--text tutorial-link" >Git gc</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-prune" class="cms-link cms-link--text tutorial-link" >Git prune</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-bash" class="cms-link cms-link--text tutorial-link" >Git Bash</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/dotfiles" class="cms-link cms-link--text tutorial-link" >Cómo almacenar archivos ocultos</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/cherry-pick" class="cms-link cms-link--text tutorial-link" >Git Cherry Pick</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/gitk" class="cms-link cms-link--text tutorial-link" >GitK</a>
+</div>
+<div class="_group-wrap">
+<a href="/es/git/tutorials/git-show" class="cms-link cms-link--text tutorial-link" >Git-show</a>
+</div>
+</div>
+</ol>
+</div>
+</div>
+<div class="hamburger ">
+<div class="_layer -top"></div>
+<div class="_layer -mid"></div>
+<div class="_layer -bottom"></div>
+</div>
+<div class="primary-nav">
+<div class="_wrapper">
+<ul class="_nav-list">
+<div>
+<li>
+<a href="/es/git" class="cms-link cms-link--text _nav-item -home" >Inicio</a>
+</li>
+</div>
+<div>
+<li class="tutorials-nav" id="tutorials-nav-mobile">
+<h4 class="_nav-item -tutorials">Tutorials</h4>
+<div class="_sublist"></div>
+</li>
+<li>
+<a href="/es/git/tutorials" class="cms-link cms-link--text _nav-item -tutorials" >Tutoriales</a>
+</li>
+</div>
+<div>
+<li>
+<a href="/es/git/articles" class="cms-link cms-link--text _nav-item -articles" >Artículos</a>
+</li>
+</div>
+<div>
+<li>
+<a href="/es/git/glossary" class="cms-link cms-link--text _nav-item -glossary" >Glosario</a>
+</li>
+</div>
+</ul>
+</div>
+</div>
+<div class="topbar is-tutorial">
+<div class="_header -is-tutorial">
+<a href="/es/git/tutorials" class="active">Tutorial</a>
+</div>
+</div>
+<form class="newsletter">
+<input class="is-empty _input" type="email" placeholder="Enter Your Email For Git News">
+<button type="submit" class="_status icon-email-submit">Submit</button>
+</form>
+<a href="#footer" class="button green-hollow secondary newsletter-cta" >Inscribirse</a>
+<a href="/es/git/search" class="search-button search-open ">
+<span class="_link icon-search">Search</span>
+</a>
+<a href="/es/git" class="search-button search-close -in-page hidden">
+<span class="_link icon-search-close -close">Search</span>
+</a>
+</div>
+<div class="page-wrap is-active -gray-bg tutorial-detail">
+<div id="content" class="_content">
+<div class="tutorial-hero">
+<div class="g-column g-12-12 text-center">
+<img src="https://wac-cdn.atlassian.com/dam/jcr:34e935dd-3108-40ef-bb3d-9ed01d977d6d/hero.svg?cdnVersion=1830" loading="lazy" alt="Qué es el control de versiones">
+<h1 > ¿Qué es el control de versiones?
+</h1>
+<div class="g-column g-12-12 t-12-12 m-12-12 breadcrumbs">
+<a href="#benefits-of-version-control" class="cms-link cms-link--text" >Ventajas del control de versiones</a>
+</div>
+<h6 > Cómo ayuda el control de versiones a que los equipos de desarrollo y DevOps de alto rendimiento prosperen
+</h6>
+</div></div>
+<div class="g-row">
+<div class="g-column g-12-12 g-centered">
+<p>El control de versiones, también conocido como "control de código fuente", es la práctica de rastrear y gestionar los cambios en el código de software. Los sistemas de control de versiones son herramientas de software que ayudan a los equipos de software a gestionar los cambios en el código fuente a lo largo del tiempo. A medida que los entornos de desarrollo se aceleran, los sistemas de control de versiones ayudan a los equipos de software a trabajar de forma más rápida e inteligente. Son especialmente útiles para los equipos de <a href="/es/devops/what-is-devops" data-event="clicked" data-uuid="9add58dd-17" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" >DevOps</a>, ya que les ayudan a reducir el tiempo de desarrollo y a aumentar las implementaciones exitosas.</p> <p>El software de control de versiones realiza un seguimiento de todas las modificaciones en el código en un tipo especial de base de datos. Si se comete un error, los desarrolladores pueden ir hacia atrás en el tiempo y comparar las versiones anteriores del código para ayudar a resolver el error, al tiempo que se minimizan las interrupciones para todos los miembros del equipo.</p>
+<div class="component component--video-embed " >
+<div class="vid-thumb" id="player-xQujH0ElTUg-b98fb7df">
+<a class="play-trigger" data-event="clicked" data-uuid="b98fb7df-fa" data-event-component="linkButton" data-event-container="videoEmbedInline" data-schema-version="1" data-product-key="bitbucket" href="https://www.youtube.com/watch?v=xQujH0ElTUg" >
+<img
+alt="video thumbnail"
+style="background-image: url(https://wac-cdn.atlassian.com/dam/jcr:31d49a6e-ec2f-4b04-9a04-565753f3f79d/f10f47b3-9ac5-4927-9f1c-2b208c2871d7.png?cdnVersion=1830);"
+src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAJCAYAAAA7KqwyAAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAAABFJREFUKBVjYBgFoyFAhRAAAAJJAAFEkgypAAAAAElFTkSuQmCC"
+loading="lazy"
+>
+<svg class="play-icon" width="70px" height="70px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M16,0 C7.163444,-5.41083001e-16 1.082166e-15,7.163444 0,16 C-1.082166e-15,24.836556 7.163444,32 16,32 C24.836556,32 32,24.836556 32,16 C32,11.7565362 30.3142906,7.68687356 27.3137085,4.6862915 C24.3131264,1.68570945 20.2434638,2.5983722e-16 16,0 Z M11.1288889,22.2222222 L11.1288889,9.77777778 L23.6533333,16 L11.1288889,22.2222222 Z"></path>
+</svg>
+</a>
+</div>
+<script type="text/x-component">
+{
+"type":"imkt.components.VideoEmbedInline",
+"params": {
+"videoId":"xQujH0ElTUg",
+"source":"youtube",
+"behavior":"replaceImage",
+"uniqueId":"b98fb7df"
+}
+}
+</script>
+</div>
+<p>Para casi todos los proyectos de software, el código fuente es como las joyas de la corona, un activo valioso cuyo valor debe protegerse. Para la mayoría de equipos de software, el código fuente es un repositorio del conocimiento de valor incalculable y de la comprensión sobre el dominio del problema que los desarrolladores han recopilado y perfeccionado con un esfuerzo cuidadoso. El control de versiones protege el código fuente tanto de las catástrofes como del deterioro casual de los errores humanos y las consecuencias accidentales.</p>
+<p>Los desarrolladores de software que trabajan en equipos están escribiendo continuamente nuevo código fuente y cambiando el que ya existe. El código de un proyecto, una aplicación o un componente de software normalmente se organiza en una estructura de carpetas o "árbol de archivos". Un desarrollador del equipo podría estar trabajando en una nueva función mientras otro desarrollador soluciona un error no relacionado cambiando código. Cada desarrollador podría hacer sus cambios en varias partes del árbol de archivos.</p>
+<p>El control de versiones ayuda a los equipos a resolver este tipo de problemas al realizar un seguimiento de todos los cambios individuales de cada colaborador y al contribuir a evitar que el trabajo concurrente entre en conflicto. Los cambios realizados en una parte del software pueden ser incompatibles con los que ha hecho otro desarrollador que está trabajando al mismo tiempo. Este problema debería detectarse y solucionarse de manera ordenada sin bloquear el trabajo del resto del equipo. Además, en todo el desarrollo de software, cualquier cambio puede introducir nuevos errores por sí mismo y el nuevo software no es fiable hasta que se prueba. De este modo, las pruebas y el desarrollo van de la mano hasta que está lista una nueva versión. </p>
+<p>Un buen software de control de versiones soporta el flujo de trabajo preferido de un desarrollador sin imponer una forma determinada de trabajar. Idealmente, también funciona en cualquier plataforma, en vez de ordenar qué sistema operativo o cadena de herramientas deben utilizar los desarrolladores. Los sistemas de control de versiones excepcionales facilitan un flujo sencillo y continuo de cambios en el código en vez del mecanismo frustrante y burdo del bloqueo de archivos, que da luz verde a un desarrollador a expensas de bloquear el progreso de los demás.</p>
+<p>Los equipos de software que no utilizan ninguna forma de control de versiones a menudo se encuentran con problemas como no saber qué cambios que se han hecho están disponibles para los usuarios o la creación de cambios incompatibles entre dos partes no relacionadas que tienen que desvincularse y revisarse exhaustivamente. Si eres un desarrollador que nunca ha utilizado el control de versiones, puede que hayas añadido versiones a tus archivos, quizás con sufijos como "final" o "más reciente", y que después hayas tenido que enfrentarte con una nueva versión final. Quizás has convertido en comentarios bloques de código, porque quieres desactivar una determinada función sin eliminar el código, con el miedo de que pueda utilizarse más adelante. El control de versiones es una forma de solucionar estos problemas.</p>
+<p>El software de control de versiones es una parte esencial del día a día de las prácticas profesionales del equipo de software moderno. Los desarrolladores de software individuales que están acostumbrados a trabajar con un sistema de control de versiones potente en sus equipos suelen reconocer el increíble valor que el control de versiones también les da incluso en los proyectos pequeños en los que trabajan solos. Una vez acostumbrados a las potentes ventajas de los sistemas de control de versiones, muchos desarrolladores no se plantearían trabajar sin ellos incluso para los proyectos que no son de software.</p>
+<h2 id="benefits-of-version-control"> Ventajas de los sistemas de control de versiones
+</h2>
+<p>Utilizar un software de control de versiones es una práctica recomendada para los equipos de software y de <a href="/es/devops/what-is-devops" data-event="clicked" data-uuid="1e733403-1f" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" >DevOps</a> de alto rendimiento. El control de versiones también ayuda a los desarrolladores a moverse más rápido y permite que los equipos de software mantengan la eficiencia y la agilidad a medida que el equipo se escala para incluir más desarrolladores.</p>
+<p>Los sistemas de control de versiones (VCS) han experimentado grandes mejoras en las últimas décadas y algunos son mejores que otros. Los VCS a veces se conocen como herramientas de SCM (Gestión del código fuente) o RCS (Sistema de control de revisiones). Una de las herramientas de VCS más populares hoy en día se llama Git. Git es un VCS <em>distribuido</em>, una categoría conocida como DVCS, que explicaremos con más detalle después. Al igual que muchos de los sistemas de VCS más populares disponibles hoy en día, Git es gratuito y de código abierto. Independientemente del nombre que tengan, o del sistema que se utilice, las principales ventajas que deberías esperar del control de versiones son las siguientes.</p>
+<ol> <li> <p>Un completo historial de cambios a largo plazo de todos los archivos. Esto quiere decir todos los cambios realizados por muchas personas a lo largo de los años. Los cambios incluyen la creación y la eliminación de los archivos, así como los cambios de sus contenidos. Las diferentes herramientas de VCS difieren en lo bien que gestionan el cambio de nombre y el movimiento de los archivos. Este historial también debería incluir el autor, la fecha y notas escritas sobre el propósito de cada cambio. Tener el historial completo permite volver a las versiones anteriores para ayudar a analizar la causa raíz de los errores y es crucial cuando se tiene que solucionar problemas en las versiones anteriores del software. Si se está trabajando de forma activa en el software, casi todo puede considerarse una "versión anterior" del software.</p> </li> <li> <p>Creación de ramas y fusiones. Si se tiene a miembros del equipo trabajando al mismo tiempo, es algo evidente; pero incluso las personas que trabajan solas pueden beneficiarse de la capacidad de trabajar en flujos independientes de cambios. La creación de una "rama" en las herramientas de VCS mantiene múltiples flujos de trabajo independientes los unos de los otros al tiempo que ofrece la facilidad de volver a fusionar ese trabajo, lo que permite que los desarrolladores verifiquen que los cambios de cada rama no entran en conflicto. Muchos equipos de software adoptan la práctica de crear ramas para cada función o quizás para cada publicación, o ambas. Existen muchos flujos de trabajo diferentes que los equipos pueden elegir cuando deciden cómo utilizar la creación de las ramas y las fusiones en VCS.</p> </li> <li> <p>Trazabilidad. Ser capaz de trazar cada cambio que se hace en el software y conectarlo con un software de gestión de proyectos y seguimiento de errores como <a href="/es/software/jira" data-event="clicked" data-uuid="c3202cd6-09" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" >Jira</a>, además de ser capaz de anotar cada cambio con un mensaje que describa el propósito y el objetivo del cambio, no solo te ayuda con el análisis de la causa raíz y la recopilación de información. Tener el historial anotado del código a tu alcance cuando estás leyendo el código, intentando entender lo que hace y por qué se ha diseñado así, puede permitir a los desarrolladores hacer cambios correctos y armoniosos que estén en línea con el diseño previsto a largo plazo del sistema. Esto puede ser especialmente importante para trabajar de manera eficaz con código heredado y es esencial para que los desarrolladores puedan calcular el trabajo futuro con precisión.</p> </li> </ol>
+<p>Aunque se puede desarrollar software sin utilizar ningún control de versiones, hacerlo somete al proyecto a un gran riesgo que ningún equipo profesional debería aceptar. Así que la pregunta no es si utilizar el control de versiones, sino qué sistema de control de versiones usar.</p>
+<p>Hay muchas opciones, pero aquí vamos a centrarnos solo en una, Git. Obtén más información sobre otros tipos de <a href="https://bitbucket.org/product/es/version-control-software" data-event="clicked" data-uuid="3e6fd41a-18" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" >software de control de versiones</a>. </p>
+</div></div>
+<div id="related-post-sidebar" class="related-post">
+<div class="related-post--text">
+<p>¿Quieres aprender a usar Git?</p> <p>Prueba este tutorial interactivo.</p>
+</div>
+<a href="/es/git/tutorials/learn-git-with-bitbucket-cloud" class="button green-solid standard related-post--link" >Comienza ahora</a>
+</div>
+<div class="_footer">
+<div class="g-column g-6-12 g-centered">
+<div class="_hero">
+<img src="https://wac-cdn.atlassian.com/dam/jcr:f6948a92-f446-466f-8783-1dd1cbcc661a/hero.svg?cdnVersion=1830" loading="lazy" alt="Qué es Git">
+</div>
+<h5 > Siguiente paso:
+</h5>
+<h4 > Qué es Git
+</h4>
+<a href="/es/git/tutorials/what-is-git" class="cms-link cms-link--text" >Empezar el siguiente tutorial</a>
+</div></div>
+</div>
+</div>
+<div id="footer" class="footer is-tutorial ">
+<div class="g-row _atlassian-logo">
+<div class="g-column g-12-12">
+<h5 > Con tecnología de
+</h5>
+<a href="https://bitbucket.org" class="cms-link cms-link--image" ><img src="https://wac-cdn.atlassian.com/dam/jcr:c3392b46-dcac-4283-8855-dd8fda6918a0/Bitbucket-white.svg?cdnVersion=1830" loading="lazy" alt="Atlassian"></a>
+</div></div>
+<div class="g-row">
+<div class="g-column g-4-12 t-12-12 m-12-12 t-gutterless">
+<h6 > Recomendaciones
+</h6>
+<a href="https://twitter.com/home?status=Switching%20to%20%23Git?%20Use%20the%20Atlassian%20Git%20tutorials%20to%20jumpstart%20your%20training%20in%20Git%20commands%20and%20workflows.%20https://www.atlassian.com/git" class="cms-link cms-link--image social-code" ><img src="https://wac-cdn.atlassian.com/dam/jcr:69b49692-9452-4dd9-aca1-df56b2bbadbd/icon-twitter.svg?cdnVersion=1830" loading="lazy" alt="Twitter"></a>
+<a href="https://www.facebook.com/sharer/sharer.php?u=https://www.atlassian.com/git" class="cms-link cms-link--image social-code" ><img src="https://wac-cdn.atlassian.com/dam/jcr:9c8da5cb-5272-4e89-9cc1-9a3f52265380/icon-facebook.svg?cdnVersion=1830" loading="lazy" alt="Facebook"></a>
+<a href="https://plus.google.com/share?url=https://www.atlassian.com/git" class="cms-link cms-link--image social-code" ><img src="https://wac-cdn.atlassian.com/dam/jcr:3b592a98-07ca-48a6-8b95-e59eae543341/icon-gplus.svg?cdnVersion=1830" loading="lazy" alt="Google Plus"></a>
+</div><div class="g-column g-4-12 t-12-12 m-12-12 t-gutterless">
+<h6 > ¿Quieres enterarte de los próximos artículos?
+</h6>
+<form class="newsletter">
+<input class="is-empty _input" type="email" placeholder="Enter Your Email For Git News">
+<button type="submit" class="_status icon-email-submit">Submit</button>
+</form>
+</div><div class="g-column g-4-12 t-12-12 m-12-12 t-gutterless">
+<h6 > Sitio alojado por
+</h6>
+<a href="/es/" class="cms-link cms-link--image" ><img src="https://wac-cdn.atlassian.com/dam/jcr:ffd56b30-ad4d-4cb5-94be-79c1dd68b1fb/Atlassian-horizontal-white-rgb.svg?cdnVersion=1830" loading="lazy" alt="Bitbucket" class="_bitbucket-logo"></a>
+</div></div>
+<div class="g-row">
+<div class="g-column g-12-12 t-12-12 m-12-12">
+<p class="license"><a class="icon-global-cclicense" href="http://creativecommons.org/licenses/by/2.5/au/" data-event="clicked" data-uuid="028d468a-75" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" data-event="clicked" data-uuid="028d468a-75" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" rel="nofollow">creativecommons.org</a>Salvo que se indique lo contrario, todo el contenido disponible se rige por la licencia <a href="http://creativecommons.org/licenses/by/2.5/au/" data-event="clicked" data-uuid="028d468a-75" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" data-event="clicked" data-uuid="028d468a-75" data-event-component="linkButton" data-event-container="richText" data-schema-version="1" data-product-key="bitbucket" rel="nofollow">de atribución 2.5 Australia de Creative Commons</a>.</p> <style type="text/css">.tutorial-sidebar ._group > a:hover { color: #ccc !important; } .tutorial-sidebar ._group-wrap > a:hover, .tutorial-sidebar ._toc > a:hover { color: #fff; } </style>
+</div></div>
+</div>
+<script type="text/javascript">
+var HTTP_PREFIX = "";
+var FEATURE_FLAG_USE_GDPR = true;
+</script>
+<script type="text/javascript" src="https://wac-cdn.atlassian.com/static/master/692/assets/build/js/gitguide/git-app-lite.js?cdnVersion=1830"></script>
+<link rel="stylesheet" href="https://wac-cdn.atlassian.com/static/master/692/assets/build/css/gitguide/site.css?cdnVersion=1830" />
+<script type="text/javascript">
+(function(){
+var imkt = window.imkt || (window.imkt = {});
+imkt.isEditMode = false;
+imkt.isProduction = true;
+imkt.constants = imkt.constants || {};
+imkt.constants.rootPath = "/";
+imkt.constants.assetPath = "https://wac-cdn.atlassian.com/static/master/692" + "/assets/";
+imkt.constants.libPath = imkt.constants.assetPath + "bower_components/";
+imkt.constants.cdnVersionQuery = "?cdnVersion=1830";
+imkt.constants.isDevUser = false;
+imkt.constants.isFreeEnabled = true;
+imkt.constants.getUserAccounts = false;
+imkt.constants.headerLoginMenu = true;
+imkt.constants.public = true;
+imkt.constants.mobileBreakpoint = 640;
+})();
+</script>
+<script type="text/x-component">
+{
+"type":"imkt.pages.WACPage",
+"params": {
+}
+}
+</script>
+<script>
+function initializeATLAnalytics() {
+var pageViewProperties = { contentSite: 'Git Microsite', contentType: 'Microsite', contentProduct: 'Bitbucket' };
+/* get url path, convert to dash format and add it to page view properties. */
+var originProduct = window.location.pathname;
+pageViewProperties.originProduct = "wac" + (originProduct === '/' ? "" : originProduct.replace(new RegExp('/', 'g'),"-"));
+if (typeof ace !== 'undefined') {
+ace.analytics.Initializer.initWithPageAnalytics('kiv6wyh2nw', pageViewProperties, null, null, window.atlGlobalLoadStart);
+}
+}
+</script>
+<script type = "text/javascript">
+/**
+* function to load external js through javascript.
+*
+* @param url - javascript url
+* @param location - location of the dom (e.g. document.head)
+*/
+var loadExternalJS = function(url, location, callback){
+var scriptTag = document.createElement('script');
+scriptTag.src = url;
+scriptTag.type = 'text/javascript';
+/* Then bind the event to the callback function.
+There are several events for cross browser compatibility. */
+scriptTag.onreadystatechange = callback;
+scriptTag.onload = callback;
+window.atlGlobalLoadStart = new Date();
+/* Fire the loading */
+location.appendChild(scriptTag);
+};
+</script>
+<script type="text/javascript" class="optanon-category-2">
+loadExternalJS("https://atl-global.atlassian.com/js/atl-global.min.js", document.body, initializeATLAnalytics);
+</script>
+</body>
+<!-- LastRendered: 01-oct-2021 19:09:55 -->
+</html>
